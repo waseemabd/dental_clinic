@@ -1,13 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
+
+    use ApiResponseTrait;
     /**
      * Create a new controller instance.
      *
@@ -23,39 +26,34 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        return view('dashboard');
-    }
 
 
-    public function viewProfile()
-    {
-        return view('profile');
-    }
+
+//    public function viewProfile($id)
+//    {
+//
+////        return view('profile');
+//    }
 
 
-    public function changePassword()
-    {
-        return view('change_password');
-    }
 
     public function updatePassword(Request $request)
     {
-        $admin= User::first(); /** TODO **/
+        $id = $request->input('id');
+        $user= User::find($id);
 
         $oldPassword = $request->input('oldPassword');
         $newPassword = $request->input('newPassword');
 
-        $admin->password = bcrypt($newPassword);
+        $user->password = bcrypt($newPassword);
 
         $this->validate(
             $request,
             [
 
-                'oldPassword' => ['required',function($attribute, $value, $fails){
+                'oldPassword' => ['required',function($attribute, $value, $fails,$user){
 
-                    if(!Hash::check($value,User::first()->password)){
+                    if(!Hash::check($value,$user->password)){
                         return $fails( 'Old password didn\'t match');
                     }
                 }],
@@ -64,14 +62,12 @@ class HomeController extends Controller
             ]
         );
 
-        if($admin->save()){
-            return redirect('/dashboard');
+        if($user->save()){
+//            return redirect('/dashboard'); response
         }
 
     }
 
-    public function generatePass(){
-      return  bcrypt('123');
-    }
+
 
 }

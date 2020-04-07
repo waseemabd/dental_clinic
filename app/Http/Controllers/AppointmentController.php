@@ -33,7 +33,7 @@ class AppointmentController extends Controller
         return view("appointments",compact('appointments'));
     }
 
-    public function delayReuests()
+    public function delayRequests()
     {
         $appointments = Patient_session::where('is_done',0)->where('is_active',0)->with('status')->get();
         return view("delay_requests",compact('appointments'));

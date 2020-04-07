@@ -33,6 +33,7 @@ $(document).ready(function($) {
             }
         });
         $('#sidebar-menu ul li.submenu a.active').parents('li:last').children('a:first').addClass('active').trigger('click');
+    console.log($('#sidebar-menu ul li.submenu a.active'))
     }
     // Sidebar Initiate
     init();

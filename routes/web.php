@@ -11,26 +11,34 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('dashboard');
-//});
+Route::get('/', function () {
+    return view('custom_auth.login');
+});
+
+Route::get('/login', function () {
+    return view('custom_auth.login');
+});
+
+
+//Route::get('/login', 'LoginController@showLoginForm')->name('login');
 
 Auth::routes();
-//Route::get('/login', 'LoginController@showLoginForm')->name('login');
-Route::middleware('auth')->group(function(){
+
+Route::middleware('isAdmin')->group(function(){
+
 
     Route::get('/', 'HomeController@index')->name('dashboard');
-
+    Route::get('/dashboard', 'HomeController@index')->name('dashboard');
     Route::get('/myProfile', 'HomeController@viewProfile')->name('view_profile');
 
 
     Route::get('/changePassword', 'HomeController@changePassword')->name('change_password');
     Route::post('/changePassword', 'HomeController@updatePassword')->name('update_password');
 
-    Route::get('/dashboard', 'HomeController@index')->name('dashboard');
-    Route::get('/doctors', 'DoctorController@index')->name('doctors');
-    Route::get('/add-doctor', 'DoctorController@create')->name('add_doctor');
-    Route::get('/edit-doctor/{id}', 'DoctorController@edit')->name('edit_doctor');
+
+//    Route::get('/doctors', 'DoctorController@index')->name('doctors');
+//    Route::get('/add-doctor', 'DoctorController@create')->name('add_doctor');
+//    Route::get('/edit-doctor/{id}', 'DoctorController@edit')->name('edit_doctor');
 
     Route::get('/patients', 'PatientController@index')->name('patients');
 
@@ -68,13 +76,13 @@ Route::middleware('auth')->group(function(){
     Route::post('/appointment-done/{id}', 'AppointmentController@done')->name('done_appointment');
     Route::post('/delay-appointment/{id}', 'AppointmentController@delay')->name('delay_appointment');
 
-    Route::get('/delay-requests', 'AppointmentController@delayReuests')->name('delay_requests');
+    Route::get('/delay-requests', 'AppointmentController@delayRequests')->name('delay_requests');
 
 
-    Route::get('/schedules', 'scheduleController@index')->name('schedules');
-    Route::get('/add-schedule', 'scheduleController@create')->name('add_schedule');
-    Route::get('/edit-schedule/{id}', 'ScheduleController@edit')->name('edit_schedule');
-    Route::get('/calendar', 'ScheduleController@calendar')->name('calendar');
+//    Route::get('/schedules', 'scheduleController@index')->name('schedules');
+//    Route::get('/add-schedule', 'scheduleController@create')->name('add_schedule');
+//    Route::get('/edit-schedule/{id}', 'ScheduleController@edit')->name('edit_schedule');
+//    Route::get('/calendar', 'ScheduleController@calendar')->name('calendar');
 
 
 
@@ -150,3 +158,5 @@ Route::middleware('auth')->group(function(){
 
 });
 
+//Route::get('/login', 'LoginController@showLoginForm')->name('login');
+Route::get('/generatePassword', 'HomeController@generatePass')->name('generate_pass');

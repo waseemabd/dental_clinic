@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
     protected $namespace = 'App\Http\Controllers';
 
 
-    protected $apiNamespace = 'App\Http\Controllers\api';
+    protected $apiNamespace = 'App\Http\Controllers\Api';
 
     /**
      * The path to the "home" route for your application.
