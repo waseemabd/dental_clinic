@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class AboutController extends Controller
 {
+
+
+    use ApiResponseTrait;
+
+
     /**
      * Display a listing of the resource.
      *
@@ -16,11 +21,13 @@ class AboutController extends Controller
     public function index()
     {
         //
-        $about = About::first() ? About::first() : new About();
+        $about = About::where('role','about')->where('is_active', 1)->get() ;
 
-//        dd($about);
-
-//        return view("about",compact('about'));
+        if($about){
+            return $this->apiResponse($about, 200 );
+        }else{
+            return $this->apiResponse(null,404,'No About Found');
+        }
 
     }
 

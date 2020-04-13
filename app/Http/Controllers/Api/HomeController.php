@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Patient;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -11,6 +12,9 @@ class HomeController extends Controller
 {
 
     use ApiResponseTrait;
+
+
+
     /**
      * Create a new controller instance.
      *
@@ -39,31 +43,42 @@ class HomeController extends Controller
 
     public function updatePassword(Request $request)
     {
-        $id = $request->input('id');
-        $user= User::find($id);
+        $id = $request->input('patientId');
+        $user= User::where('related_patient',$id)->first();
+        $patient = Patient::find($id);
 
-        $oldPassword = $request->input('oldPassword');
+//        $oldPassword = $request->input('oldPassword');
         $newPassword = $request->input('newPassword');
 
-        $user->password = bcrypt($newPassword);
 
-        $this->validate(
-            $request,
-            [
+        if($user && $newPassword){
+            $user->password = bcrypt($newPassword);
+            $patient->password = bcrypt($newPassword);
 
-                'oldPassword' => ['required',function($attribute, $value, $fails,$user){
+        }else{
+            return $this->apiResponse(null,404,'No User Found');
+        }
 
-                    if(!Hash::check($value,$user->password)){
-                        return $fails( 'Old password didn\'t match');
-                    }
-                }],
-                'newPassword' => 'required',
-                'confirmPassword' => 'same:newPassword',
-            ]
-        );
+//        $this->validate(
+//            $request,
+//            [
+//
+//                'oldPassword' => ['required',function($attribute, $value, $fails,$user){
+//
+//                    if(!Hash::check($value,$user->password)){
+//                        return $fails( 'Old password didn\'t match');
+//                    }
+//                }],
+//                'newPassword' => 'required',
+////                'confirmPassword' => 'same:newPassword',
+//            ]
+//        );
 
         if($user->save()){
-//            return redirect('/dashboard'); response
+            $patient->save();
+            return $this->apiResponse($user, 200 );
+        }else{
+            return $this->apiResponse(null,406, 'Password Could Not Updated' );
         }
 
     }

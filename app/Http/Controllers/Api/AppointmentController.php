@@ -17,55 +17,95 @@ class AppointmentController extends Controller
 {
 
 
+    use ApiResponseTrait;
 
 
-    public function __construct()
-    {
-
-    }
 
     /**
      * Display a listing of the resource.
      *
      */
-    public function index($id)   // appointmentsHistory
+    public function index(Request $request)   // appointmentsHistory
     {
-
+        $id = $request->input('patientId');
         $selected_patient = Patient::find($id);
 //        $uncompleted = $selected_patient->session()->where('is_done', 0)->get();
-        $completed = $selected_patient->session()->where('is_done', 1)->with('status')->get();
+//        if($selected_patient){
+//
+//        }else{
+//            return $this->apiResponse(null,404,'Patient Not Found');
+//        }
+        if($selected_patient){
+            $completed = $selected_patient->session()->where('is_done', 1)->with('status')->get();
+        }else{
+            return $this->apiResponse(null,404,'Patient Not Found');
+        }
+
         //response
-//        return view("appointments",compact('appointments'));
+        return $this->apiResponse($completed, 200 );
     }
 
-    public function appointments($id)
+    public function appointments(Request $request)
     {
+        $id = $request->input('patientId');
+
         $selected_patient = Patient::find($id);
-        $uncompleted = $selected_patient->session()->where('is_done', 0)->with('status')->get();
-//        $completed = $selected_patient->session()->where('is_done', 1)->with('status')->get();
+
+
+        if($selected_patient){
+            $uncompleted = $selected_patient->session()->where('is_done', 0)->with('status')->get();
+        }else{
+            return $this->apiResponse(null,404,'Patient Not Found');
+        }
+
         //response
-//        return view("appointments",compact('appointments'));
+        return $this->apiResponse($uncompleted, 200 );
+
     }
 
-    public function getAppointmentByStatus($id)
-    {
-        $selected_patient = Patient::find($id);
-        $uncompleted = $selected_patient->status()->where('id', $id)->session()->get();
-//        $completed = $selected_patient->session()->where('is_done', 1)->with('status')->get();
-        //response
-//        return view("appointments",compact('appointments'));
-    }
+//    public function getAppointmentByStatus(Request $request)
+//    {
+//        $id = $request->input('statusId');
+//
+//        $selected_status = Patient::find($id);
+//
+//        if($selected_status){
+//            $uncompleted = $selected_status->session()->where('is_done', 0)->get();
+//            $completed = $selected_status->session()->where('is_done', 1)->get();
+//        }else{
+//            return $this->apiResponse(null,404,'Patient Not Found');
+//        }
+//
+//        //response
+//        return $this->apiResponse(compact(['completed','uncompleted']), 200 );
+//
+//
+//        //response
+////        return view("appointments",compact('appointments'));
+//    }
 
 
     public function delayRequest(Request $request)
     {
-        $status_id = $request->input('id');
-        $appointments = Patient_session::where('status_id',$status_id)->get();
-        $appointments->is_delayed = 1;
-        if($appointments->save()){
-            //response
+        $id = $request->input('sessionId');
+        $appointment = Patient_session::find($id);
+
+        if($appointment){
+
+            $appointment->is_active = 0;
+            $appointment->is_delayed = 1;
+
+        }else{
+            return $this->apiResponse(null,404,'Appointment Not Found');
         }
-//        return view("delay_requests",compact('appointments'));
+
+
+        if($appointment->save()){
+            return $this->apiResponse($appointment, 200 );
+        }else{
+            return $this->apiResponse(null,406,'Appointment Not Found');
+        }
+
     }
 
 

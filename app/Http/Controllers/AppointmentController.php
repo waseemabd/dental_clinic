@@ -30,6 +30,7 @@ class AppointmentController extends Controller
     public function index()
     {
         $appointments = Patient_session::where('is_done',0)->where('is_active',1)->with('status')->get();
+//        dd($appointments);
         return view("appointments",compact('appointments'));
     }
 
@@ -82,8 +83,8 @@ class AppointmentController extends Controller
         $appointment->is_done = 0;
 
         $appointment->is_delayed = 0;
-        $appointment->is_active = $request->input('status') == 'true' ? 1 : 0;;
-
+//        dd($request->input('status'));
+        $appointment->is_active = $request->input('status') ;
         $this->validate(
             $request,
             [

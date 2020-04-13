@@ -30,19 +30,19 @@ Route::middleware('auth:api')->group(function(){
 //    Route::get('/view-patient/{id}', 'PatientController@show')->name('view_patient');
 
     Route::post('/edit-patient', 'PatientController@update')->name('edit_patient');
-    Route::get('/status/{id}', 'PatientController@getStatus')->name('appointments');
+    Route::post('/get-status', 'PatientController@getStatus')->name('appointments');
 
-    Route::get('/appointmentsHistory/{P_id}', 'AppointmentController@index')->name('appointments_history');
-    Route::get('/appointments/{P_id}', 'AppointmentController@appointments')->name('appointments');
-    Route::get('/appointmentByStatus/{S_id}', 'AppointmentController@getAppointmentByStatus')->name('appointments_status');
+    Route::post('/appointmentsHistory', 'AppointmentController@index')->name('appointments_history');
+    Route::post('/appointments', 'AppointmentController@appointments')->name('appointments');
+//    Route::post('/appointmentByStatus', 'AppointmentController@getAppointmentByStatus')->name('appointments_status');
 
 
 
     Route::post('/delay-requests', 'AppointmentController@delayRequest')->name('delay_request');
 
-    Route::get('/blogs', 'blogController@index')->name('blogs');
+    Route::post('/blogs', 'blogController@index')->name('blogs');
 
-    Route::get('/view-blog/{id}', 'blogController@show')->name('show_blog');
+    Route::post('/view-blog', 'blogController@show')->name('show_blog');
 
-    Route::get('/about-us', 'aboutController@index')->name('blogs');
+    Route::post('/about-us', 'aboutController@index')->name('blogs');
 });

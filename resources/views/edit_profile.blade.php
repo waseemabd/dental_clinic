@@ -10,33 +10,25 @@
 @section('content')
 
 
+
     <div class="page-wrapper">
         <div class="content">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
-                    <h4 class="page-title float-left">Edit About Us</h4>
+                    <h4 class="page-title float-left">Edit My Profile</h4>
 
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
-                    <form method="post" action="/edit-about/{{$about->id}}"  enctype="multipart/form-data">
+                    <form method="post" action="/edit-profile"  enctype="multipart/form-data">
                         @csrf
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Title <span class="text-danger">*</span></label>
-                                    <input class="form-control" type="text" name="title" value="{{$about->title}}">
-                                    <small class="error">{{$errors->first('title')}}</small>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input class="form-control" name="email" type="email" value="{{$about->email}}">
+                                    <input class="form-control" name="email" type="email" value="{{$detail->email}}">
                                     <small class="error">{{$errors->first('email')}}</small>
 
                                 </div>
@@ -44,7 +36,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Phone </label>
-                                    <input class="form-control" name="phone" type="text" value="{{$about->phone}}">
+                                    <input class="form-control" name="phone" type="text" value="{{$detail->phone}}">
                                     <small class="error">{{$errors->first('phone')}}</small>
 
                                 </div>
@@ -55,7 +47,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Address</label>
-                                    <input type="text" name="address" class="form-control " value="{{$about->address}}">
+                                    <input type="text" name="address" class="form-control " value="{{$detail->address}}">
                                     <small class="error">{{$errors->first('address')}}</small>
 
                                 </div>
@@ -63,17 +55,6 @@
 
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Description <span class="text-danger">*</span></label>
-                                    <textarea class="form-control" name="description" style="height: 200px">{{$about->description}}</textarea>
-                                    <small class="error">{{$errors->first('description')}}</small>
-
-                                </div>
-                            </div>
-
-                        </div>
 
                         <div class="row">
 
@@ -88,7 +69,7 @@
                                         </div>
                                     </div>
                                     <div class="product-thumbnail col-sm-6">
-                                        <img src="{{$about->image}}"  id="output" class="img-thumbnail img-fluid" alt="">
+                                        <img src="{{$detail->image}}" id="output" class="img-thumbnail img-fluid" alt="">
                                         <span class="product-remove" title="remove"><i class="fa fa-close"></i></span>
                                     </div>
                                 </div>
@@ -98,16 +79,14 @@
                                     <label class="display-block">Status</label>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="status"
-                                               id="product_active" value="1"
-                                            {{$about->is_active=='1'?'checked':''}} disabled>
+                                               id="product_active" value="1" checked disabled>
                                         <label class="form-check-label" for="product_active">
                                             Active
                                         </label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="status"
-                                               id="product_inactive"
-                                               value="0" {{$about->is_active=='0'?'checked':''}} disabled>
+                                               id="product_inactive" value="0" disabled>
                                         <label class="form-check-label" for="product_inactive">
                                             Inactive
                                         </label>
@@ -118,7 +97,7 @@
                         </div>
 
                         <div class="m-t-20 text-center">
-                            <button class="btn btn-primary submit-btn">Edit About</button>
+                            <button class="btn btn-primary submit-btn">Update</button>
                         </div>
                     </form>
                 </div>

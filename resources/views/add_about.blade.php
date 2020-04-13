@@ -10,6 +10,7 @@
 @section('content')
 
 
+
     <div class="page-wrapper">
         <div class="content">
             <div class="row">
@@ -28,6 +29,36 @@
                                     <label>Title <span class="text-danger">*</span></label>
                                     <input class="form-control" type="text" name="title" value="{{old('title')}}">
                                     <small class="error">{{$errors->first('title')}}</small>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input class="form-control" name="email" type="email" value="{{old('email')}}">
+                                    <small class="error">{{$errors->first('email')}}</small>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Phone </label>
+                                    <input class="form-control" name="phone" type="text" value="{{old('phone')}}">
+                                    <small class="error">{{$errors->first('phone')}}</small>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    <input type="text" name="address" class="form-control " value="{{old('address')}}">
+                                    <small class="error">{{$errors->first('address')}}</small>
+
                                 </div>
                             </div>
 
@@ -67,14 +98,14 @@
                                     <label class="display-block">Status</label>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="status"
-                                               id="product_active" value="1" checked>
+                                               id="product_active" value="1" checked disabled>
                                         <label class="form-check-label" for="product_active">
                                             Active
                                         </label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="status"
-                                               id="product_inactive">
+                                               id="product_inactive" disabled>
                                         <label class="form-check-label" for="product_inactive">
                                             Inactive
                                         </label>

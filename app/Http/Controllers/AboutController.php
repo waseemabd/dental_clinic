@@ -15,10 +15,11 @@ class AboutController extends Controller
     public function index()
     {
         //
-        $about = About::first() ? About::first() : new About();
+//       dd(About::where('role','about')->where('is_active', 1)->get());
+        $about = About::where('role','about')->where('is_active', 1)->first() ? About::where('role','about')->where('is_active', 1)->first() : new About();
 
-//        dd($about);
-
+//        dd($about[0]);
+//        $about = $about[0];
         return view("about",compact('about'));
 
     }
@@ -46,11 +47,14 @@ class AboutController extends Controller
         //
 
         $about = new About();
+        $about->role = "about";
 
         $about->title = $request->input('title');
 
-
         $about->description = $request->input('description');
+        $about->email = $request->input('email');
+        $about->phone = $request->input('phone');
+        $about->address = $request->input('address');
 
 
 //        $about->image = $request->input('image');
@@ -61,6 +65,9 @@ class AboutController extends Controller
             [
                 'title'=> 'required',
                 'description' => 'required',
+                'phone' => 'required|numeric',
+                'address' => 'required',
+                'email' => 'email',
                 'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]
         );
@@ -120,9 +127,11 @@ class AboutController extends Controller
 
 
         $about->description = $request->input('description');
+        $about->email = $request->input('email');
+        $about->phone = $request->input('phone');
+        $about->address = $request->input('address');
 
-
-        $about->image = $request->input('image');
+//        $about->image = $request->input('image');
         $about->is_active = $request->input('status') ;
 
         $this->validate(
@@ -130,6 +139,9 @@ class AboutController extends Controller
             [
                 'title'=> 'required',
                 'description' => 'required',
+                'phone' => 'required|numeric',
+                'address' => 'required',
+                'email' => 'email',
                 'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]
         );

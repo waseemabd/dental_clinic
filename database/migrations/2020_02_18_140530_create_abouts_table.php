@@ -15,8 +15,12 @@ class CreateAboutsTable extends Migration
     {
         Schema::create('abouts', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('role');
             $table->string('title')->nullable();
             $table->text('description')->nullable();
+            $table->string('email')->nullable();
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
             $table->string('image')->nullable();
             $table->boolean('is_active')->default(false);
             $table->timestamps();

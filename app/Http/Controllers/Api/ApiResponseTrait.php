@@ -5,12 +5,16 @@ namespace App\Http\Controllers\Api;
 trait ApiResponseTrait{
 
 
-    public function apiResponse($data = null, $error = null, $code = 200){
+    public function apiResponse($data = null, $code = 200, $error = null){
 
         $array = [
+//            'data' => $data,
+//            'status' => in_array($code, $this->successCode()) ? true : false,
+//            'error' => $error
+            'code' => $code,
             'data' => $data,
-            'status' => in_array($code, $this->successCode()) ? true : false,
-            'error' => $error
+            'message' => in_array($code, $this->successCode()) ? 'Successful' : $error,
+
         ];
 
         return response($array, $code);

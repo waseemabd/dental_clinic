@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
+
+    use ApiResponseTrait;
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -19,17 +24,28 @@ class BlogController extends Controller
 
         $blogs = Blog::all();
 
-        //response
-//        return view('blogs',compact('blogs'));
+        if($blogs){
+            return $this->apiResponse($blogs, 200 );
+        }else{
+            return $this->apiResponse(null,404,'No Blog Found');
+        }
     }
 
 
-    public function show($id)
+    public function show(Request $request)
     {
         //
+
+        $id = $request->input('blogtId');
         $blog= Blog::find($id);
-//response
-//        return view('view-blog',compact('blog'));
+
+
+        if($blog){
+            return $this->apiResponse($blog, 200 );
+        }else{
+            return $this->apiResponse(null,404,'No Blog Found');
+        }
+
 
     }
 

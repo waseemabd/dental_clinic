@@ -41,6 +41,12 @@
 
                                 <p>{{$about->description}}</p>
                             </div>
+                            <div class="blog-content">
+
+                                Address: <p>{{$about->address}}</p>
+                                Email: <p>{{$about->email}}</p>
+                                Phone: <p>{{$about->phone}}</p>
+                            </div>
                         </article>
                         <div class="post-right">
                             @if($about->id)

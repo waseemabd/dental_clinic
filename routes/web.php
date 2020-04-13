@@ -31,6 +31,9 @@ Route::middleware('isAdmin')->group(function(){
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
     Route::get('/myProfile', 'HomeController@viewProfile')->name('view_profile');
 
+    Route::get('/edit-profile', 'HomeController@edit_profile')->name('edit_profile');
+    Route::post('/edit-profile', 'HomeController@update_profile')->name('edit_profile');
+
 
     Route::get('/changePassword', 'HomeController@changePassword')->name('change_password');
     Route::post('/changePassword', 'HomeController@updatePassword')->name('update_password');

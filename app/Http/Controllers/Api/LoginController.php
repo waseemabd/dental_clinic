@@ -22,7 +22,7 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-
+    use ApiResponseTrait;
     public $successStatus = 200;
     /**
      * login api
@@ -32,11 +32,16 @@ class LoginController extends Controller
     public function login(){
         if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){
             $user = Auth::user();
-            $success['token'] =  $user->createToken('MyApp')-> accessToken;
-            return response()->json(['success' => $success], $this-> successStatus);
+            $patientId= $user->related_patient;
+            $token =  $user->createToken('MyApp')-> accessToken;
+
+//            return response()->json(['success' => $success], $this-> successStatus);
+            return $this->apiResponse(compact(['patientId','token']), 200 );
+
         }
         else{
-            return response()->json(['error'=>'Unauthorised'], 401);
+//            return response()->json(['error'=>'Unauthorised'], 401);
+            return $this->apiResponse(null,401, 'Unauthorised' );
         }
     }
 
