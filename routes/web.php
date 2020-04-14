@@ -151,6 +151,9 @@ Route::middleware('isAdmin')->group(function(){
 
     Route::get('/reports/{type}', 'ReportController@index')->name('invoice_reports');
     Route::get('/reports/{type}', 'ReportController@index')->name('expense_reports');
+    Route::get('/reports/invoice/{id}', 'ReportController@show')->name('show_invoice_reports');
+
+
 
     Route::get('/about-us', 'aboutController@index')->name('blogs');
     Route::get('/add-about', 'aboutController@create')->name('add_about');

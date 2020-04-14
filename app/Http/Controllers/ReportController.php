@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Asset;
+use App\Patient_session;
 use Illuminate\Http\Request;
 use MongoDB\BSON\Type;
 
@@ -37,7 +38,10 @@ class ReportController extends Controller
             return view("expense_reports",compact(['items', 'used_Array']));
         }
         if ($type == 'invoice'){
-            return view('invoice_reports');
+
+            $sessions= Patient_session::where('is_done',1)->get();
+
+            return view('invoice_reports',compact('sessions'));
         }
     }
 
@@ -71,6 +75,9 @@ class ReportController extends Controller
     public function show($id)
     {
         //
+
+
+
     }
 
     /**
