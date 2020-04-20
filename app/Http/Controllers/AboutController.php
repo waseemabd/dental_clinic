@@ -58,7 +58,8 @@ class AboutController extends Controller
 
 
 //        $about->image = $request->input('image');
-        $about->is_active = $request->input('status') ;
+        $status = $request->input('status');
+        $about->is_active = isset($status)? $status : 1 ;
 
         $this->validate(
             $request,
@@ -132,7 +133,8 @@ class AboutController extends Controller
         $about->address = $request->input('address');
 
 //        $about->image = $request->input('image');
-        $about->is_active = $request->input('status') ;
+        $status = $request->input('status');
+        $about->is_active = isset($status)? $status : 1 ;
 
         $this->validate(
             $request,

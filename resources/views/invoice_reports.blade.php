@@ -54,7 +54,7 @@
                                 <tr id="row-{{$session->id}}">
                                     <td>{{$session->id}}</td>
                                     <td>{{$session->title}}</td>
-                                    <td>{{$session->date}}</td>
+                                    <td>{{date('Y-m-d',strtotime($session->date))}}</td>
                                     <td>{{$session->price}}</td>
                                     <td><span
                                             class="custom-badge status-green">

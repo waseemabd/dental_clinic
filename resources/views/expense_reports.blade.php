@@ -73,7 +73,7 @@
                                                 {{ $asset->price * $used['amount']  }}
                                             @endif
                                         @endforeach</td>
-                                    <td>{{$asset->movement_date}}</td>
+                                    <td>{{date('Y-m-d',strtotime($asset->movement_date))}}</td>
 
                                     <td class="text-right">
                                         <a class="dropdown-item" href="/view-used-item/{{$asset->id}}"><i

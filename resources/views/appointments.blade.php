@@ -74,7 +74,7 @@
                                     <td><a href="/view-patient/{{$appointment->status->patient->id}}" target="_blank">{{$appointment->status->patient->userName}}</a></td>
                                     <td>{{$appointment->status->patient->dateOfBirth}}</td>
                                     <td>{{$appointment->status->patient->gender =='M'?'Male':'Female'}}</td>
-                                    <td id="date-{{$appointment->id}}">{{$appointment->date}}</td>
+                                    <td id="date-{{$appointment->id}}">{{date('Y-m-d',strtotime($appointment->date))}}</td>
                                     <td id="time-{{$appointment->id}}">{{$appointment->time}}</td>
                                     <td id="status-{{$appointment->id}}"><span
                                             class="custom-badge status-{{$appointment->is_delayed==1?'red':'green'}}">

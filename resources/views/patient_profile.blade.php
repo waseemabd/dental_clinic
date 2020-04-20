@@ -176,11 +176,15 @@
                                                             <div class="timeline-content">
                                                                 <h2 class="name">{{$session->title}}</h2>
                                                                 <h3 class="name">{{$session->description}}</h3>
+{{--                                                                <div class="float-right"><a--}}
+{{--                                                                        class="btn btn-outline-primary"--}}
+{{--                                                                        href="/#" data-toggle="modal"--}}
+{{--                                                                        data-target="#edit_status"--}}
+{{--                                                                        data-status="{{$session}}">Edit--}}
+{{--                                                                        Appointment</a></div>--}}
                                                                 <div class="float-right"><a
                                                                         class="btn btn-outline-primary"
-                                                                        href="/#" data-toggle="modal"
-                                                                        data-target="#edit_status"
-                                                                        data-status="{{$session}}">Edit
+                                                                        href="/edit-appointment/{{$session->id}}" >Edit
                                                                         Appointment</a></div>
 
                                                                 @if($session->note != "" || $session->note != null)
@@ -189,7 +193,7 @@
                                                                         {{$session->note}}
                                                                     </div>
                                                                 @endif
-                                                                <div><span class="time">{{$session->date}}</span>
+                                                                <div><span class="time">{{date('Y-m-d',strtotime($session->date)).' '.$session->time}}</span>
 
                                                                 </div>
 

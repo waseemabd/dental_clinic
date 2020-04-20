@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\About;
+use App\Patient;
+use App\Patient_session;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +29,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $patient_count = Patient::all()->count();
+        $pending_count = $appointments = Patient_session::where('is_done',0)->where('is_active',0)->count();
+        $upcoming = Patient_session::where('is_done',0)->where('is_active',1)->with('status')->orderBy('date', 'desc')->take(5)->get();
+        $new_patients = Patient::where('is_active',1)->orderBy('created_at', 'desc')->take(5)->get();
+//                dd($upcoming);
+        return view('dashboard',compact(['patient_count','pending_count','upcoming','new_patients']));
     }
 
 

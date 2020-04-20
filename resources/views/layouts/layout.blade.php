@@ -31,81 +31,6 @@
         <a id="toggle_btn" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
         <a id="mobile_btn" class="mobile_btn float-left" href="#sidebar"><i class="fa fa-bars"></i></a>
         <ul class="nav user-menu float-right">
-            <li class="nav-item dropdown d-none d-sm-block">
-                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"><i class="fa fa-bell-o"></i> <span class="badge badge-pill bg-danger float-right">3</span></a>
-                <div class="dropdown-menu notifications">
-                    <div class="topnav-dropdown-header">
-                        <span>Notifications</span>
-                    </div>
-                    <div class="drop-scroll">
-                        <ul class="notification-list">
-                            <li class="notification-message">
-                                <a href="activities.html">
-                                    <div class="media">
-											<span class="avatar">
-												<img alt="John Doe" src="/images/user.jpg" class="img-fluid">
-											</span>
-                                        <div class="media-body">
-                                            <p class="noti-details"><span class="noti-title">John Doe</span> added new task <span class="noti-title">Patient appointment booking</span></p>
-                                            <p class="noti-time"><span class="notification-time">4 mins ago</span></p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="notification-message">
-                                <a href="activities.html">
-                                    <div class="media">
-                                        <span class="avatar">V</span>
-                                        <div class="media-body">
-                                            <p class="noti-details"><span class="noti-title">Tarah Shropshire</span> changed the task name <span class="noti-title">Appointment booking with payment gateway</span></p>
-                                            <p class="noti-time"><span class="notification-time">6 mins ago</span></p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="notification-message">
-                                <a href="activities.html">
-                                    <div class="media">
-                                        <span class="avatar">L</span>
-                                        <div class="media-body">
-                                            <p class="noti-details"><span class="noti-title">Misty Tison</span> added <span class="noti-title">Domenic Houston</span> and <span class="noti-title">Claire Mapes</span> to project <span class="noti-title">Doctor available module</span></p>
-                                            <p class="noti-time"><span class="notification-time">8 mins ago</span></p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="notification-message">
-                                <a href="activities.html">
-                                    <div class="media">
-                                        <span class="avatar">G</span>
-                                        <div class="media-body">
-                                            <p class="noti-details"><span class="noti-title">Rolland Webber</span> completed task <span class="noti-title">Patient and Doctor video conferencing</span></p>
-                                            <p class="noti-time"><span class="notification-time">12 mins ago</span></p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="notification-message">
-                                <a href="activities.html">
-                                    <div class="media">
-                                        <span class="avatar">V</span>
-                                        <div class="media-body">
-                                            <p class="noti-details"><span class="noti-title">Bernardo Galaviz</span> added new task <span class="noti-title">Private chat module</span></p>
-                                            <p class="noti-time"><span class="notification-time">2 days ago</span></p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="topnav-dropdown-footer">
-                        <a href="activities.html">View all Notifications</a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item dropdown d-none d-sm-block">
-                <a href="javascript:void(0);" id="open_msg_box" class="hasnotifications nav-link"><i class="fa fa-comment-o"></i> <span class="badge badge-pill bg-danger float-right">8</span></a>
-            </li>
             <li class="nav-item dropdown has-arrow">
                 <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
                         <span class="user-img">
@@ -155,27 +80,11 @@
                     <li>
                         <a href="/patients"><i class="fa fa-wheelchair"></i> <span>Patients</span></a>
                     </li>
-{{--                    <li>--}}
-{{--                        <a href="/appointments"><i class="fa fa-calendar"></i> <span>Appointments</span></a>--}}
-{{--                    </li>--}}
                     <li class="submenu">
                         <a href="#"><i class="fa fa-calendar"></i> <span> Appointments </span> <span class="menu-arrow"></span></a>
                         <ul style="display: none;">
                             <li><a href="/appointments">Manage Appointments</a></li>
                             <li><a href="/delay-requests">Delay Requests</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="/schedules"><i class="fa fa-calendar-check-o"></i> <span>Doctor Schedule</span></a>
-                    </li>
-                    <li class="submenu">
-                        <a href="#"><i class="fa fa-money"></i> <span> Accounts </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                            <li><a href="/invoices">Invoices</a></li>
-                            <li><a href="/payments">Payments</a></li>
-                            <li><a href="/expenses">Expenses</a></li>
-                            <li><a href="taxes.html">Taxes</a></li>
-                            <li><a href="provident-fund.html">Provident Fund</a></li>
                         </ul>
                     </li>
                     <li class="submenu">
@@ -212,26 +121,7 @@
                     <li>
                         <a href="/about-us"><i class="fa fa-cog"></i> <span>About Us</span></a>
                     </li>
-                    <li class="menu-title">UI Elements</li>
-                    <li>
-                        <a href="/calendar"><i class="fa fa-calendar"></i> <span>Calendar</span></a>
-                    </li>
-                    <li class="menu-title">Extras</li>
-                    <li class="submenu">
-                        <a href="#"><i class="fa fa-columns"></i> <span>Pages</span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                            <li><a href="login.html"> Login </a></li>
-                            <li><a href="register.html"> Register </a></li>
-                            <li><a href="forgot-password.html"> Forgot Password </a></li>
-                            <li><a href="change-password2.html"> Change Password </a></li>
-                            <li><a href="lock-screen.html"> Lock Screen </a></li>
-                            <li><a href="profile.html"> Profile </a></li>
-                            <li><a href="gallery.html"> Gallery </a></li>
-                            <li><a href="error-404.html">404 Error </a></li>
-                            <li><a href="error-500.html">500 Error </a></li>
-                            <li><a href="blank-page.html"> Blank Page </a></li>
-                        </ul>
-                    </li>
+
                 </ul>
             </div>
         </div>

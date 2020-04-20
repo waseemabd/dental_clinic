@@ -14,12 +14,7 @@
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
                     <h4 class="page-title float-left">Edit Appointment</h4>
-                    <a href="/add-patient" class="btn btn btn-primary btn-rounded float-right"><i
-                            class="fa fa-plus"></i>Add New Patient</a>
-                    <a href="/#"
-                       data-toggle="modal" data-target="#add_status"
-                       class="btn btn btn-primary btn-rounded float-right mr-2"><i
-                            class="fa fa-plus"></i> Add New Status</a>
+
                 </div>
 
             </div>

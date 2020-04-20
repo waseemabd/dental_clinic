@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\About;
 use App\Asset;
 use App\Patient_session;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use MongoDB\BSON\Type;
 
@@ -45,26 +47,9 @@ class ReportController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+
+
 
     /**
      * Display the specified resource.
@@ -75,42 +60,28 @@ class ReportController extends Controller
     public function show($id)
     {
         //
-
-
+        $session= Patient_session::find($id);
+        $patient = $session->status->patient->first();
+        $clinic = About::where('role', 'about')->first();
+//dd($patient);
+        return view('invoice',compact(['session', 'patient', 'clinic']));
 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function download_invoice($id)
     {
-        //
+//        dd('dasygudhajsd');
+        $session= Patient_session::find($id);
+        $patient = $session->status->patient->first();
+        $clinic = About::where('role', 'about')->first();
+
+        $pdf = app('dompdf.wrapper');
+//        $pdf = PDF::loadView('invoice.pdf');
+        $pdf->loadView('invoice',compact(['session', 'patient', 'clinic']));
+        return $pdf->download('invoice.pdf');
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+
 }

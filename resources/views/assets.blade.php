@@ -78,7 +78,7 @@
                                     </td>
                                     <td>{{$asset->price}}</td>
                                     <td>{{$asset->quantity}}</td>
-                                    <td>{{$asset->movement_date}}</td>
+                                    <td>{{date('Y-m-d',strtotime($asset->movement_date))}}</td>
                                     <td>
                                         <span class="custom-badge status-{{$asset->is_active==1? 'green' : 'red'}}">
                                             {{$asset->is_active==1? 'Active' : 'Inactive'}}
