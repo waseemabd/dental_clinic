@@ -118,7 +118,7 @@ class PatientController extends Controller
 
 //        dd(  $selected_patient->session()->get());
         $status = $selected_patient->status()->get();
-        $session = $selected_patient->session()->get();
+        $session = $selected_patient->session()->where('is_done', 1)->get();
         $uncompleted = $selected_patient->session()->where('is_done', 0)->get();
         $details = $selected_patient;
         $statuses = $status;

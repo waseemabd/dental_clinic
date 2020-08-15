@@ -6,9 +6,12 @@ use App\About;
 use App\Patient;
 use App\Patient_session;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use MongoDB\Driver\Session;
 
 class HomeController extends Controller
 {
@@ -22,6 +25,12 @@ class HomeController extends Controller
         $this->middleware('auth')->except('generatePass');
     }
 
+
+//    public function patientsNumber(){
+//        $patients = Patient::where('is_active',1)->get('created_at');
+//        dd($patients);
+//    }
+
     /**
      * Show the application dashboard.
      *
@@ -29,10 +38,17 @@ class HomeController extends Controller
      */
     public function index()
     {
+
         $patient_count = Patient::all()->count();
         $pending_count = $appointments = Patient_session::where('is_done',0)->where('is_active',0)->count();
         $upcoming = Patient_session::where('is_done',0)->where('is_active',1)->with('status')->orderBy('date', 'desc')->take(5)->get();
         $new_patients = Patient::where('is_active',1)->orderBy('created_at', 'desc')->take(5)->get();
+
+
+//        $patients = Patient::where('is_active',1)->get('created_at');
+//        dd($patients);
+
+
 //                dd($upcoming);
         return view('dashboard',compact(['patient_count','pending_count','upcoming','new_patients']));
     }
@@ -68,7 +84,8 @@ class HomeController extends Controller
         $profile->address = $request->input('address');
 
 //        $about->image = $request->input('image');
-        $profile->is_active = $request->input('status') ;
+//        $profile->is_active = $request->input('status') ;
+        $profile->is_active = 1 ;
 
         $this->validate(
             $request,
@@ -132,6 +149,80 @@ class HomeController extends Controller
 
 
 
+
+    public function patientsNumber(){
+
+        $thisYearNumber = Patient::whereYear('created_at', Carbon::now()->year)
+            ->select(DB::raw("MONTH(created_at) month"), DB::raw("count(id) as number"))
+            ->groupby("month")
+        ->get();
+
+        $previousYearNumber = Patient::whereYear('created_at', Carbon::now()->year-1)
+            ->select(DB::raw("MONTH(created_at) month"), DB::raw("count(id) as number"))
+            ->groupby("month")
+            ->get();
+
+        $thisYearArr = [];
+        $previousYearArr =[];
+        foreach ($thisYearNumber as $raw){
+            $thisYearArr[$raw['month']] = $raw['number'];
+
+        }
+        foreach ($previousYearNumber as $raw){
+            $previousYearArr[$raw['month']] = $raw['number'];
+
+        }
+        return $thisYearNumber || $previousYearNumber  ? response()->json(['status' => 1, "message" => "patient founded successfully",'thisYear' => Carbon::now()->year ,'patientNumber' => $thisYearArr,'previousYear' => Carbon::now()->year-1, 'previousNumber' => $previousYearArr]) : response()->json(['status' => 0, "message" => "failed to find patient", 'patientNumber' => null, 'previousNumber' => null]);
+
+    }
+
+
+    public function sessionsNumber(){
+        $uncompleted = Patient_session::whereYear('date', Carbon::now()->year)
+            ->select(DB::raw("MONTH(date) month"), DB::raw("count(id) as number"))
+            ->where('is_done',0)
+            ->groupby("month")
+            ->get();
+        $completed = Patient_session::whereYear('date', Carbon::now()->year)
+            ->select(DB::raw("MONTH(date) month"), DB::raw("count(id) as number"))
+            ->where('is_done',1)
+            ->groupby("month")
+            ->get();
+
+        $sessionArr = [];
+        $appointmentArr =[];
+        foreach ($completed as $raw){
+            $sessionArr[$raw['month']] = $raw['number'];
+
+        }
+        foreach ($uncompleted as $raw){
+            $appointmentArr[$raw['month']] = $raw['number'];
+
+        }
+        return $completed || $uncompleted  ? response()->json(['status' => 1, "message" => "patient founded successfully",'sessionsNumber' => $sessionArr, 'appointmentsNumber' => $appointmentArr]) : response()->json(['status' => 0, "message" => "failed to find patient", 'sessionsNumber' => null, 'appointmentsNumber' => null]);
+
+
+    }
+
+
+    public function profit(){
+
+        $session= Patient_session::whereYear('date', Carbon::now()->year)
+            ->select(DB::raw("MONTH(date) month"), DB::raw("sum(price) - sum(cost) as profit"))
+            ->where('is_done',1)
+            ->groupby("month")
+            ->get();
+
+        $profitArr =[];
+        foreach ($session as $raw){
+            $profitArr[$raw['month']] = $raw['profit'];
+
+        }
+//dd($profitArr);
+        return $session   ? response()->json(['status' => 1, "message" => "patient founded successfully",'profit' => $profitArr]) : response()->json(['status' => 0, "message" => "failed to find patient", 'profit' => null]);
+
+
+    }
 
 
     public function generatePass(){

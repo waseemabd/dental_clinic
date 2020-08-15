@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
-    <title>Preclinic - Medical & Hospital - Bootstrap 4 Admin Template</title>
+    <title>Dental Clinic</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
@@ -25,7 +25,7 @@
     <div class="header">
         <div class="header-left">
             <a href="/" class="logo">
-                <img src="/images/logo.png" width="35" height="35" alt=""> <span>Preclinic</span>
+                <img src="/images/logo.png" width="35" height="35" alt=""> <span>Dental Clinic</span>
             </a>
         </div>
         <a id="toggle_btn" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
@@ -135,6 +135,7 @@
 
 
 <div class="sidebar-overlay" data-reff=""></div>
+
 <script src="/js/jquery-3.2.1.min.js"></script>
 <script src="/js/popper.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>

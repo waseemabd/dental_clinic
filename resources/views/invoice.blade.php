@@ -33,9 +33,9 @@
                                 <div class="col-6 col-sm-6 m-b-20">
                                     <img src="/images/logo-dark.png" class="inv-logo" alt="">
                                     <ul class="list-unstyled">
-                                        <li>{{$clinic->title}}</li>
-                                        <li>{{$clinic->address}}</li>
-                                        <li>{{$clinic->phone}}</li>
+                                        <li>{{isset($clinic->title) ? $clinic->title : ""}}</li>
+                                        <li>{{isset($clinic->address) ? $clinic->address: ""}}</li>
+                                        <li>{{isset($clinic->phone) ? $clinic->phone:""}}</li>
                                     </ul>
                                 </div>
                                 <div class="col-6 col-sm-6 m-b-20">

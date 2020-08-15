@@ -29,6 +29,12 @@ Route::middleware('isAdmin')->group(function(){
 
     Route::get('/', 'HomeController@index')->name('dashboard');
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+    Route::post('/patientsNumber', 'HomeController@patientsNumber')->name('patientsNumber');
+    Route::post('/SessionsNumber', 'HomeController@sessionsNumber')->name('patientsNumber');
+    Route::post('/profit', 'HomeController@profit')->name('patientsNumber');
+
+
+
     Route::get('/myProfile', 'HomeController@viewProfile')->name('view_profile');
 
     Route::get('/edit-profile', 'HomeController@edit_profile')->name('edit_profile');

@@ -5,7 +5,9 @@
 @section('content')
  <div class="page-wrapper">
     <div class="content">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <div class="row">
+
             <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6">
                 <div class="dash-widget">
                     <span class="dash-widget-bg2"><i class="fa fa-user-o"></i></span>
@@ -31,7 +33,6 @@
                     <div class="card-body">
                         <div class="chart-title">
                             <h4>Patient Total</h4>
-                            <span class="float-right"><i class="fa fa-caret-up" aria-hidden="true"></i> 15% Higher than Last Month</span>
                         </div>
                         <canvas id="linegraph"></canvas>
                     </div>
@@ -42,12 +43,6 @@
                     <div class="card-body">
                         <div class="chart-title">
                             <h4>Patients In</h4>
-                            <div class="float-right">
-                                <ul class="chat-user-total">
-                                    <li><i class="fa fa-circle current-users" aria-hidden="true"></i>ICU</li>
-                                    <li><i class="fa fa-circle old-users" aria-hidden="true"></i> OPD</li>
-                                </ul>
-                            </div>
                         </div>
                         <canvas id="bargraph"></canvas>
                     </div>
@@ -55,7 +50,19 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12 col-md-6 col-lg-8 col-xl-8">
+            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="chart-title">
+                            <h4>Profit</h4>
+                        </div>
+                        <canvas id="bargraph2"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-8 col-xl-12">
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title d-inline-block">Upcoming Appointments</h4> <a href="/appointments" class="btn btn-primary float-right">View all</a>
@@ -100,6 +107,7 @@
                     </div>
                 </div>
             </div>
+
 {{--            <div class="col-12 col-md-6 col-lg-4 col-xl-4">--}}
 {{--                <div class="card member-panel">--}}
 {{--                    <div class="card-header bg-white">--}}
@@ -182,7 +190,7 @@
 {{--            </div>--}}
         </div>
         <div class="row">
-            <div class="col-12 col-md-6 col-lg-8 col-xl-8">
+            <div class="col-12 col-md-6 col-lg-8 col-xl-12">
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title d-inline-block">New Patients </h4> <a href="/patients" class="btn btn-primary float-right">View all</a>
@@ -278,215 +286,7 @@
 {{--            </div>--}}
         </div>
     </div>
-    <div class="notification-box">
-        <div class="msg-sidebar notifications msg-noti">
-            <div class="topnav-dropdown-header">
-                <span>Messages</span>
-            </div>
-            <div class="drop-scroll msg-list-scroll" id="msg_list">
-                <ul class="list-box">
-                    <li>
-                        <a href="chat.html">
-                            <div class="list-item">
-                                <div class="list-left">
-                                    <span class="avatar">R</span>
-                                </div>
-                                <div class="list-body">
-                                    <span class="message-author">Richard Miles </span>
-                                    <span class="message-time">12:28 AM</span>
-                                    <div class="clearfix"></div>
-                                    <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="chat.html">
-                            <div class="list-item new-message">
-                                <div class="list-left">
-                                    <span class="avatar">J</span>
-                                </div>
-                                <div class="list-body">
-                                    <span class="message-author">John Doe</span>
-                                    <span class="message-time">1 Aug</span>
-                                    <div class="clearfix"></div>
-                                    <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="chat.html">
-                            <div class="list-item">
-                                <div class="list-left">
-                                    <span class="avatar">T</span>
-                                </div>
-                                <div class="list-body">
-                                    <span class="message-author"> Tarah Shropshire </span>
-                                    <span class="message-time">12:28 AM</span>
-                                    <div class="clearfix"></div>
-                                    <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="chat.html">
-                            <div class="list-item">
-                                <div class="list-left">
-                                    <span class="avatar">M</span>
-                                </div>
-                                <div class="list-body">
-                                    <span class="message-author">Mike Litorus</span>
-                                    <span class="message-time">12:28 AM</span>
-                                    <div class="clearfix"></div>
-                                    <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="chat.html">
-                            <div class="list-item">
-                                <div class="list-left">
-                                    <span class="avatar">C</span>
-                                </div>
-                                <div class="list-body">
-                                    <span class="message-author"> Catherine Manseau </span>
-                                    <span class="message-time">12:28 AM</span>
-                                    <div class="clearfix"></div>
-                                    <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="chat.html">
-                            <div class="list-item">
-                                <div class="list-left">
-                                    <span class="avatar">D</span>
-                                </div>
-                                <div class="list-body">
-                                    <span class="message-author"> Domenic Houston </span>
-                                    <span class="message-time">12:28 AM</span>
-                                    <div class="clearfix"></div>
-                                    <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="chat.html">
-                            <div class="list-item">
-                                <div class="list-left">
-                                    <span class="avatar">B</span>
-                                </div>
-                                <div class="list-body">
-                                    <span class="message-author"> Buster Wigton </span>
-                                    <span class="message-time">12:28 AM</span>
-                                    <div class="clearfix"></div>
-                                    <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="chat.html">
-                            <div class="list-item">
-                                <div class="list-left">
-                                    <span class="avatar">R</span>
-                                </div>
-                                <div class="list-body">
-                                    <span class="message-author"> Rolland Webber </span>
-                                    <span class="message-time">12:28 AM</span>
-                                    <div class="clearfix"></div>
-                                    <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="chat.html">
-                            <div class="list-item">
-                                <div class="list-left">
-                                    <span class="avatar">C</span>
-                                </div>
-                                <div class="list-body">
-                                    <span class="message-author"> Claire Mapes </span>
-                                    <span class="message-time">12:28 AM</span>
-                                    <div class="clearfix"></div>
-                                    <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="chat.html">
-                            <div class="list-item">
-                                <div class="list-left">
-                                    <span class="avatar">M</span>
-                                </div>
-                                <div class="list-body">
-                                    <span class="message-author">Melita Faucher</span>
-                                    <span class="message-time">12:28 AM</span>
-                                    <div class="clearfix"></div>
-                                    <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="chat.html">
-                            <div class="list-item">
-                                <div class="list-left">
-                                    <span class="avatar">J</span>
-                                </div>
-                                <div class="list-body">
-                                    <span class="message-author">Jeffery Lalor</span>
-                                    <span class="message-time">12:28 AM</span>
-                                    <div class="clearfix"></div>
-                                    <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="chat.html">
-                            <div class="list-item">
-                                <div class="list-left">
-                                    <span class="avatar">L</span>
-                                </div>
-                                <div class="list-body">
-                                    <span class="message-author">Loren Gatlin</span>
-                                    <span class="message-time">12:28 AM</span>
-                                    <div class="clearfix"></div>
-                                    <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="chat.html">
-                            <div class="list-item">
-                                <div class="list-left">
-                                    <span class="avatar">T</span>
-                                </div>
-                                <div class="list-body">
-                                    <span class="message-author">Tarah Shropshire</span>
-                                    <span class="message-time">12:28 AM</span>
-                                    <div class="clearfix"></div>
-                                    <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="topnav-dropdown-footer">
-                <a href="chat.html">See all messages</a>
-            </div>
-        </div>
-    </div>
+
  </div>
 @endsection
 
@@ -494,5 +294,240 @@
 @push('custom_scripts')
 
     <script src="/js/Chart.bundle.js"></script>
-    <script src="/js/chart.js"></script>
+{{--    <script src="/js/chart.js"></script>--}}
+    <script>
+
+        $(document).ready(function() {
+
+
+
+
+            getPatientsNumber();
+            getSessionsNumber();
+            profit();
+
+            function profit(){
+                $.ajaxSetup({
+
+                    headers: {
+
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+
+                    }
+
+                });
+                $.ajax({
+                    type: 'POST',
+                    url: "/profit",
+                    success: function (response) {
+                        if (response.status === 1) {
+
+                            var profit = response['profit'];
+
+                            var barChartData2 = {
+                                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                                datasets: [{
+                                    label: "profit",
+                                    backgroundColor: 'rgba(0, 158, 251, 0.5)',
+                                    borderColor: 'rgba(0, 158, 251, 1)',
+                                    borderWidth: 1,
+                                    data: [profit[1], profit[2],profit[3],profit[4],profit[5],profit[6], profit[7], profit[8], profit[9], profit[10], profit[11], profit[12]]
+                                }]
+                            };
+
+                            var ctx = document.getElementById('bargraph2').getContext('2d');
+                            window.myBar = new Chart(ctx, {
+                                type: 'bar',
+                                data: barChartData2,
+                                options: {
+                                    responsive: true,
+                                    legend: {
+                                        display: false,
+                                    }
+                                }
+                            });
+                            console.log(profit[1], profit[2],profit[3],profit[4],profit[5],profit[6], profit[7], profit[8], profit[9], profit[10], profit[11], profit[12])
+
+                        } else {
+                            alert("something went wrong");
+                        }
+
+
+                    },
+                    error: function (jqXHR) {
+
+                        alert(jQuery.parseJSON(jqXHR.responseText).message);
+
+                    }
+                });
+            }
+
+
+            function getSessionsNumber() {
+                $.ajaxSetup({
+
+                    headers: {
+
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+
+                    }
+
+                });
+                $.ajax({
+                    type: 'POST',
+                    url: "/SessionsNumber",
+                    success: function (response) {
+                        if (response.status === 1) {
+
+                            var sessions = response['sessionsNumber'];
+                            var appointments = response['appointmentsNumber'];
+
+                            var lineChartData = {
+                                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                                datasets: [{
+                                    label: "Sessions",
+                                    backgroundColor: "rgba(0, 158, 251, 0.5)",
+                                    data: [sessions[1], sessions[2],sessions[3],sessions[4],sessions[5],sessions[6], sessions[7], sessions[8], sessions[9], sessions[10], sessions[11], sessions[12]]
+                                }, {
+                                    label: "Appointments",
+                                    backgroundColor: "rgba(255, 188, 53, 0.5)",
+                                    fill: true,
+                                    data: [appointments[1], appointments[2],appointments[3],appointments[4],appointments[5],appointments[6], appointments[7], appointments[8], appointments[9], appointments[10], appointments[11], appointments[12]]
+
+                                }]
+                            };
+
+                            var linectx = document.getElementById('linegraph').getContext('2d');
+                            window.myLine = new Chart(linectx, {
+                                type: 'line',
+                                data: lineChartData,
+                                options: {
+                                    responsive: true,
+                                    legend: {
+                                        display: false,
+                                    },
+                                    tooltips: {
+                                        mode: 'index',
+                                        intersect: false,
+                                    }
+                                }
+                            });
+                            // console.log(previousYearArr[7])
+
+                        } else {
+                            alert("something went wrong");
+                        }
+
+
+                    },
+                    error: function (jqXHR) {
+
+                        alert(jQuery.parseJSON(jqXHR.responseText).message);
+
+                    }
+                });
+            }
+
+            function getPatientsNumber(i) {
+                $.ajaxSetup({
+
+                    headers: {
+
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+
+                    }
+
+                });
+                $.ajax({
+                    type: 'POST',
+                    url: "/patientsNumber",
+                    success: function (response) {
+                        if (response.status === 1) {
+
+                            var thisYearArr = response['patientNumber'];
+                            var thisYear = response['thisYear'];
+                            var previousYearArr = response['previousNumber'];
+                            var previousYear = response['previousYear'];
+
+                            var barChartData = {
+                                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                                datasets: [{
+                                    label: thisYear,
+                                    backgroundColor: 'rgba(0, 158, 251, 0.5)',
+                                    borderColor: 'rgba(0, 158, 251, 1)',
+                                    borderWidth: 1,
+                                    data: [thisYearArr[1], thisYearArr[2],thisYearArr[3],thisYearArr[4],thisYearArr[5],thisYearArr[6], thisYearArr[7], thisYearArr[8], thisYearArr[9], thisYearArr[10], thisYearArr[11], thisYearArr[12]]
+                                }, {
+                                    label: previousYear,
+                                    backgroundColor: 'rgba(255, 188, 53, 0.5)',
+                                    borderColor: 'rgba(255, 188, 53, 1)',
+                                    borderWidth: 1,
+                                    data: [previousYearArr[1], previousYearArr[2],previousYearArr[3],previousYearArr[4],previousYearArr[5],previousYearArr[6], previousYearArr[7], previousYearArr[8], previousYearArr[9], previousYearArr[10], previousYearArr[11], previousYearArr[12]]
+                                }]
+                            };
+
+                            var ctx = document.getElementById('bargraph').getContext('2d');
+                            window.myBar = new Chart(ctx, {
+                                type: 'bar',
+                                data: barChartData,
+                                options: {
+                                    responsive: true,
+                                    legend: {
+                                        display: false,
+                                    }
+                                }
+                            });
+
+
+
+
+                            // var lineChartData = {
+                            //     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                            //     datasets: [{
+                            //         label: thisYear,
+                            //         backgroundColor: "rgba(0, 158, 251, 0.5)",
+                            //         data: [thisYearArr[1], thisYearArr[2],thisYearArr[3],thisYearArr[4],thisYearArr[5],thisYearArr[6], thisYearArr[7], thisYearArr[8], thisYearArr[9], thisYearArr[10], thisYearArr[11], thisYearArr[12]]
+                            //     }, {
+                            //         label: previousYear,
+                            //         backgroundColor: "rgba(255, 188, 53, 0.5)",
+                            //         fill: true,
+                            //         data: [previousYearArr[1], previousYearArr[2],previousYearArr[3],previousYearArr[4],previousYearArr[5],previousYearArr[6], previousYearArr[7], previousYearArr[8], previousYearArr[9], previousYearArr[10], previousYearArr[11], previousYearArr[12]]
+                            //
+                            //     }]
+                            // };
+                            //
+                            // var linectx = document.getElementById('linegraph').getContext('2d');
+                            // window.myLine = new Chart(linectx, {
+                            //     type: 'line',
+                            //     data: lineChartData,
+                            //     options: {
+                            //         responsive: true,
+                            //         legend: {
+                            //             display: false,
+                            //         },
+                            //         tooltips: {
+                            //             mode: 'index',
+                            //             intersect: false,
+                            //         }
+                            //     }
+                            // });
+                            // console.log(previousYearArr[7])
+
+                        } else {
+                            alert("something went wrong");
+                        }
+
+
+                    },
+                    error: function (jqXHR) {
+
+                        alert(jQuery.parseJSON(jqXHR.responseText).message);
+
+                    }
+                });
+            }
+
+        });
+
+    </script>
 @endpush
