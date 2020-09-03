@@ -32,7 +32,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="chart-title">
-                            <h4>Patient Total</h4>
+                            <h4>Sessions Total</h4>
                         </div>
                         <canvas id="linegraph"></canvas>
                     </div>

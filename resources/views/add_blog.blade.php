@@ -24,7 +24,7 @@
                             <small class="error">{{$errors->first('title')}}</small>
                         </div>
                         <div class="form-group">
-                            <label>Blog Images</label>
+                            <label>Blog Image</label>
                             <div>
                                 <input class="form-control-file" name="image" type="file" id="image-input">
                                 <small class="form-text text-muted">Max. file size: 50 MB. Allowed images: jpg, gif, png. Maximum 10 images only.</small>

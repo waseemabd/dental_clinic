@@ -50,7 +50,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Price <span class="text-danger">*</span></label>
+                                    <label>Unit Price<span class="text-danger">*</span></label>
                                     <input class="form-control" type="number" name="price"  value="{{old('price')}}">
                                     <small class="error">{{$errors->first('price')}}</small>
                                 </div>

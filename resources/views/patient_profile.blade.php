@@ -174,6 +174,7 @@
                                                         </div>
                                                         <div class="experience-content">
                                                             <div class="timeline-content">
+                                                                <p class="name">Status: {{$session->status->title}}</p>
                                                                 <h2 class="name">{{$session->title}}</h2>
                                                                 <h3 class="name">{{$session->description}}</h3>
 {{--                                                                <div class="float-right"><a--}}
@@ -226,6 +227,7 @@
                                                     </div>
                                                     <div class="experience-content">
                                                         <div class="timeline-content">
+                                                            <p class="name">Status: {{$session->status->title}}</p>
                                                             <h2 class="name">{{$session->title}}</h2>
                                                             <h3 class="name">{{$session->description}}</h3>
 

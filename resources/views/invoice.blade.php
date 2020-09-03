@@ -20,7 +20,7 @@
                 </div>
                 <div class="col-sm-7 col-8 text-right m-b-30">
                     <div class="btn-group btn-group-sm">
-                        <button class="btn btn-white"><a href="/reports/invoice/{{$session->id}}/download">PDF</a></button>
+{{--                        <button class="btn btn-white"><a href="/reports/invoice/{{$session->id}}/download">PDF</a></button>--}}
                         <button type="button" class="btn btn-white" id="print"><i class="fa fa-print fa-lg"></i> Print</button>
                     </div>
                 </div>
@@ -136,6 +136,11 @@
 @endsection
 
 @push('custom_scripts')
+
+
+    <script src="/js/select2.min.js"></script>
+    <script src="/js/moment.min.js"></script>
+    <script src="/js/bootstrap-datetimepicker.min.js"></script
     <script src="/js/print.min.js"></script>
     <script>
         $(document).ready(function () {
@@ -146,10 +151,6 @@
             });
         });
     </script>
-    <script src="/js/select2.min.js"></script>
-    <script src="/js/moment.min.js"></script>
-    <script src="/js/bootstrap-datetimepicker.min.js"></script
-
 @endpush
 
 

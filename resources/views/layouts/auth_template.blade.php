@@ -28,6 +28,7 @@
 <script src="/js/jquery-3.2.1.min.js"></script>
 <script src="/js/popper.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
+@stack('custom_scripts')
 <script src="/js/template.js"></script>
 </body>
 

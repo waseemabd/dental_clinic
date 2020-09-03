@@ -58,7 +58,7 @@
                                 <th>Asset Name</th>
                                 <th>Supplier Name</th>
                                 <th>Supplier Company</th>
-                                <th>Price</th>
+                                <th>Unit Price</th>
                                 <th>Quantity</th>
                                 <th>Purchase Date</th>
                                 <th class="text-center">Status</th>

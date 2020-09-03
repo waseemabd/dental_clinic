@@ -22,7 +22,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('generatePass');
+        $this->middleware('auth')->except(['generatePass','showHash']);
     }
 
 
@@ -226,7 +226,15 @@ class HomeController extends Controller
 
 
     public function generatePass(){
-        return  bcrypt('123');
+//        return  bcrypt('123');
+        return view('generate_password');
+    }
+
+    public function showHash(Request $request){
+        $pass = $request->input('key');
+        $hashed = bcrypt($pass);
+        return $hashed   ? response()->json(['status' => 1, "message" => "success",'hash' => $hashed]) : response()->json(['status' => 0, "message" => "failed", 'hash' => null]);
+
     }
 
 

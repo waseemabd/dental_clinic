@@ -137,7 +137,7 @@
                 function(settings, data, dataIndex) {
                     var min = $('#min-date').val();
                     var max = $('#max-date').val();
-                    var createdAt = data[4] || 0; // Our date column in the table
+                    var createdAt = data[2] || 0; // Our date column in the table
 
                     if (
                         (min == "" || max == "") ||
@@ -150,6 +150,7 @@
             );
 
             $('.date-range-filter').on('dp.change',function() {
+                table = $('.datatable').DataTable();
                 table.draw();
             });
             /**     end time range filter        **/

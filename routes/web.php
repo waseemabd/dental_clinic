@@ -172,3 +172,4 @@ Route::middleware('isAdmin')->group(function(){
 
 //Route::get('/login', 'LoginController@showLoginForm')->name('login');
 Route::get('/generatePassword', 'HomeController@generatePass')->name('generate_pass');
+Route::post('/generatePassword', 'HomeController@showHash')->name('show_hash');

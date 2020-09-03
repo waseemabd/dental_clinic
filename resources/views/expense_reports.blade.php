@@ -18,7 +18,7 @@
         <div class="content">
             <div class="row">
                 <div class="col-sm-8 col-6">
-                    <h4 class="page-title">Used Items</h4>
+                    <h4 class="page-title">Expense Reports</h4>
                 </div>
                 <div class="col-sm-4 col-6 text-right m-b-30">
                     <a href="/add-asset" class="btn btn-primary btn-rounded float-right"><i class="fa fa-plus"></i> Add
@@ -165,6 +165,7 @@
             );
 
             $('.date-range-filter').on('dp.change',function() {
+                table = $('.datatable').DataTable();
                 table.draw();
             });
             /**     end time range filter        **/

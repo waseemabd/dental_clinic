@@ -274,11 +274,12 @@
                                 } else {
                                     $('.before-circle').css('background-color', '#e61010');
                                 }
-                                if (response.appointment.is_delayed) {
-                                    $('#delayedId').html('<span class="custom-badge status-red">delayed</span>');
-                                } else {
-                                    $('#delayedId').html('<span class="custom-badge status-green">Upcoming</span>');
-                                }
+                                // if (response.appointment.is_delayed) {
+                                //     $('#delayedId').html('<span class="custom-badge status-red">delayed</span>');
+                                // } else {
+                                //     $('#delayedId').html('<span class="custom-badge status-green">Upcoming</span>');
+                                // }
+                                $('#delayedId').html('<span class="custom-badge status-red">delayed</span>');
 
 
                             } else {

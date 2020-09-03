@@ -95,18 +95,15 @@
                         </ul>
                     </li>
                     <li class="submenu">
-                        <a href="#"><i class="fa fa-commenting-o"></i> <span> Blog</span> <span class="menu-arrow"></span></a>
+                        <a href="#"><i class="fa fa-commenting-o"></i> <span> Blogs</span> <span class="menu-arrow"></span></a>
                         <ul style="display: none;">
-                            <li><a href="/blogs">Blog</a></li>
+                            <li><a href="/blogs">All Bloga</a></li>
                             <li><a href="/add-blog">Add Blog</a></li>
                         </ul>
                     </li>
 
                     <li>
                         <a href="/suppliers"><i class="fa fa-bell-o"></i> <span>Suppliers</span></a>
-                    </li>
-                    <li>
-                        <a href="/assets"><i class="fa fa-cube"></i> <span>Assets</span></a>
                     </li>
                     <li>
                         <a href="/payment-types"><i class="fa fa-bell-o"></i> <span>Payment Types</span></a>

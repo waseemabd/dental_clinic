@@ -17,7 +17,7 @@
                         <a href="index-2.html"><img src="/img/logo-dark.png" alt=""></a>
                     </div>
                     <div class="form-group @error('email') is-invalid @enderror">
-                        <label>Username or Email</label>
+                        <label>Email</label>
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                         @error('email')
                         <span class="invalid-feedback" role="alert">
@@ -35,13 +35,13 @@
                                     </span>
                         @enderror
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+{{--                    <div class="form-check">--}}
+{{--                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>--}}
 
-                        <label class="form-check-label" for="remember">
-                            {{ __('Remember Me') }}
-                        </label>
-                    </div>
+{{--                        <label class="form-check-label" for="remember">--}}
+{{--                            {{ __('Remember Me') }}--}}
+{{--                        </label>--}}
+{{--                    </div>--}}
 
                     <div class="form-group text-center">
                         <button type="submit" class="btn btn-primary account-btn">Login</button>
