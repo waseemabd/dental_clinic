@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 
+use App\Asset_patient_session;
 use App\Patient;
+use App\Patient_session;
 use App\Patient_status;
 use App\User;
 use Illuminate\Http\Request;
@@ -175,9 +177,12 @@ class PatientController extends Controller
 //        $patient->image = $request->input('image');
         $patient->is_active = $request->input('status');
 
+        $user->name = $request->input('userName');
+        $user->email = $request->input('email');
 
 
-            $this->validate(
+
+        $this->validate(
                 $request,
                 [
                     'fname' => 'required',
@@ -300,6 +305,20 @@ class PatientController extends Controller
     public function destroy($id)
     {
         //
+
+        $sessions =Patient::find($id)->session()->get();
+        foreach ($sessions as $session){
+            $used_assets=  Asset_patient_session::where('patient_session_id',$session->id)->get() ;
+            foreach ($used_assets as $used){
+                $ids =$used->asset_id;
+                Asset_patient_session::where('patient_session_id',$session->id)->where('asset_id',$used->asset_id)->delete();
+
+            }
+
+
+        }
+        $user = User::where('related_patient',$id)->delete();
+
         return Patient::destroy($id) ? response()->json(['status' => 1, "message" => "Patient deleted successfully"]) : response()->json(['status' => 0, "message" => "failed to delete Patient"]);
 
     }
@@ -307,6 +326,18 @@ class PatientController extends Controller
     public function destroy_status($id)
     {
         //
+        $sessions = Patient_session::where('status_id',$id)->get();
+        foreach ($sessions as $session){
+            $used_assets=  Asset_patient_session::where('patient_session_id',$session->id)->get() ;
+            foreach ($used_assets as $used){
+                $ids =$used->asset_id;
+                Asset_patient_session::where('patient_session_id',$session->id)->where('asset_id',$used->asset_id)->delete();
+
+            }
+
+
+        }
+
         return Patient_status::destroy($id) ? response()->json(['status' => 1, "message" => "Status deleted successfully"]) : response()->json(['status' => 0, "message" => "failed to delete Status"]);
 
     }

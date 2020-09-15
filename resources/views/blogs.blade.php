@@ -13,7 +13,7 @@
         <div class="content">
             <div class="row">
                 <div class="col-sm-8 col-4">
-                    <h4 class="page-title">Blog</h4>
+                    <h4 class="page-title">Blogs</h4>
                 </div>
                 <div class="col-sm-4 col-8 text-right m-b-30">
                     <a class="btn btn-primary btn-rounded float-right" href="/add-blog"><i class="fa fa-plus"></i> Add Blog</a>
@@ -64,7 +64,7 @@
                 <div class="modal-body text-center">
                     <img src="/images/sent.png" alt="" width="50" height="46">
                     <meta name="csrf-token" content="{{ csrf_token() }}">
-                    <h3>Are you sure want to delete this Appointment?</h3>
+                    <h3>Are you sure want to delete this blog?</h3>
                     <div class="m-t-20"><a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
                         <button type="submit" class="btn btn-danger" id="delete_btn">Delete</button>
                     </div>

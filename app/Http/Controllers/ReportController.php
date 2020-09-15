@@ -61,7 +61,7 @@ class ReportController extends Controller
     {
         //
         $session= Patient_session::find($id);
-        $patient = $session->status->patient->first();
+        $patient = $session->status->patient;
         $clinic = About::where('role', 'about')->first();
 //dd($patient);
         return view('invoice',compact(['session', 'patient', 'clinic']));

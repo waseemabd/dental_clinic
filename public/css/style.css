@@ -3598,15 +3598,15 @@ table.table-inbox tbody tr.checked {
 	padding: 12px 20px;
 }
 .blog-info a {
-	color: #909090;
-	margin-right: 5px;
+    color: #100f0f;
+    margin-right: 5px;
 }
 .blog-info a:last-child {
-	margin-right: 0;
+    margin-right: 0;
 }
 .blog-info a:hover {
-	color: #009efb;
-	;
+    color: #fffbfb;
+;
 }
 .blog-info i {
 	color: #009efb;

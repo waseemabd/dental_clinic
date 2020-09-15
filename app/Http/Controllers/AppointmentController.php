@@ -164,7 +164,7 @@ class AppointmentController extends Controller
         $appointment->time = date('H:i:s',strtotime($request->input('time')));
         $appointment->cost = $request->input('cost') ;
         $appointment->price = $request->input('price') ;
-        $appointment->is_done = $request->input('is_done');
+        $appointment->is_done = 0;
 
         $appointment->is_delayed = $request->input('is_delayed');
         $appointment->is_active = $request->input('status') ;

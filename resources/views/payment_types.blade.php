@@ -148,7 +148,7 @@
                 <div class="modal-body text-center">
                     <img src="/images/sent.png" alt="" width="50" height="46">
                     <meta name="csrf-token" content="{{ csrf_token() }}">
-                    <h3>Are you sure want to delete this Asset?</h3>
+                    <h3>Are you sure want to delete this Payment Type?</h3>
                     <div class="m-t-20"><a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
                         <button type="submit" class="btn btn-danger" id="delete_btn">Delete</button>
                     </div>

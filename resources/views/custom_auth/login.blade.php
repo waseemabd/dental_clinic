@@ -14,7 +14,7 @@
                 <form method="POST" action="{{ route('login') }}" class="form-signin">
                     @csrf
                     <div class="account-logo">
-                        <a href="index-2.html"><img src="/img/logo-dark.png" alt=""></a>
+                        <a href="index-2.html"><img src="/images/logo-dark.png" alt=""></a>
                     </div>
                     <div class="form-group @error('email') is-invalid @enderror">
                         <label>Email</label>

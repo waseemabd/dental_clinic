@@ -164,25 +164,6 @@
                         <div class="row col-md-12" style="display: inline-flex">
 
                             <div class="form-group col-md-4">
-                                <label class="display-block">Appointment Is Done</label>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="is_done" id="product_active"
-                                           value="1"
-                                        {{$appointment->is_done=='1'?'checked':''}}>
-                                    <label class="form-check-label" for="product_active">
-                                        Is Done
-                                    </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="is_done" id="product_inactive"
-                                           value="0" {{$appointment->is_done=='0'?'checked':''}}>
-                                    <label class="form-check-label" for="product_inactive">
-                                        Not Done
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="form-group col-md-4">
                                 <label class="display-block">Appointment Is Delayed</label>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="is_delayed" id="product_active"
